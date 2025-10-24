@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>الفعاليات - دليل فعاليات المدينة</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d0e6b00386.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #0d6efd;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            direction: rtl;
+            color: #222;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 14px 0;
+        }
+
+            header .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        #flags {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .flag {
+            width: 36px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 18px auto;
+            padding: 0 12px;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 12px;
+        }
+
+            .event-card img {
+                width: 100%;
+                height: 170px;
+                object-fit: cover;
+                border-radius: 6px;
+                margin-bottom: 8px;
+            }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+            footer a {
+                color: #0d6efd;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
+        #return-top {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+            #return-top:hover {
+                background-color: #0b5ed7;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flags -->
+    <div id="flags">
+        <img id="ar-flag" class="flag" src="https://flagcdn.com/w20/sy.png" alt="عربي">
+        <img id="en-flag" class="flag" src="https://flagcdn.com/w20/us.png" alt="English">
+    </div>
+
+    <header>
+        <div class="container">
+            <h1 id="site-title">دليل فعاليات المدينة 📅</h1>
+            <nav>
+                <ul>
+                    <li><a id="nav1" href="index.html">الرئيسية</a></li>
+                    <li><a id="nav2" href="events.html">الفعاليات</a></li>
+                    <li><a id="nav3" href="event.html">تفاصيل الفعالية</a></li>
+                    <li><a id="nav4" href="about.html">عن الدليل</a></li>
+                    <li><a id="nav5" href="contact.html">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2 id="page-heading" class="mb-4">الفعاليات القادمة</h2>
+
+        <!-- Filters -->
+        <section id="search-filter" class="mb-4">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input id="search-input" type="text" class="form-control" placeholder="ابحث عن فعالية">
+                        <button id="search-btn" class="btn btn-primary">بحث</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select id="category-select" class="form-select">
+                        <option value="">جميع التصنيفات</option>
+                        <option value="music">موسيقية</option>
+                        <option value="sport">رياضية</option>
+                        <option value="culture">ثقافية</option>
+                        <option value="family">عائلية</option>
+                        <option value="tech">تقنية</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <select id="governorate-select" class="form-select">
+                        <option  value="">جميع المحافظات</option>
+                        <option id="g1" value="دمشق">دمشق</option>
+                        <option id="g2" value="ريف دمشق">ريف دمشق</option>
+                        <option id="g3" value="حلب">حلب</option>
+                        <option id="g4" value="حمص">حمص</option>
+                        <option id="g5" value="حماة">حماة</option>
+                        <option id="g6" value="اللاذقية">اللاذقية</option>
+                        <option id="g7" value="طرطوس">طرطوس</option>
+                        <option id="g8" value="السويداء">السويداء</option>
+                        <option id="g9" value="درعا">درعا</option>
+                        <option id="g10" value="دير الزور">دير الزور</option>
+                        <option id="g11" value="الرقة">الرقة</option>
+                        <option id="g12" value="الحسكة">الحسكة</option>
+                        <option id="g13" value="إدلب">إدلب</option>
+                        <option id="g14" value="القنيطرة">القنيطرة</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="sort-select" class="form-select">
+                        <option value="">الترتيب</option>
+                        <option value="newest">الأحدث</option>
+                        <option value="oldest">الأقدم</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button id="clear-filters" class="btn btn-secondary btn-sm">مسح الفلاتر</button>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section id="events-list" class="row g-3">
+            <article class="col-md-4 event-card" data-cat-key="music" data-governorate="دمشق" data-date="2025-10-10">
+                <h3 class="ev-title">مهرجان الموسيقى 🎵</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.33.07_6cb316af.jpg" alt="Music festival">
+                <p class="ev-info" >📍 دمشق - 10/10/2025 🗓️</p>
+                <p class="ev-cat">موسيقية</p>
+                <p class="ev-desc">مهرجان موسيقي يقدم عروضًا حية لفرق وفنانين محليين</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=1">التفاصيل</a>
+            </article>
+
+            <article class="col-md-4 event-card" data-cat-key="culture" data-governorate="حلب" data-date="2025-10-15">
+                <h3 class="ev-title">معرض الفنون الحديثة 🎨</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.55.45_30fae4a2.jpg" alt="Arts exhibition">
+                <p class="ev-info">📍 حلب - 15/10/2025 🗓️</p>
+                <p class="ev-cat">ثقافية</p>
+                <p class="ev-desc">معرض يجمع الأعمال الفنية لفنانين محليين</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=2">التفاصيل</a>
+            </article>
+
+            <article class="col-md-4 event-card" data-cat-key="sport" data-governorate="اللاذقية" data-date="2025-10-20">
+                <h3 class="ev-title">بطولة كرة القدم المحلية ⚽</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-24 في 13.20.52_10a6807d.jpg" alt="Football tournament">
+                <p class="ev-info">📍 اللاذقية - 20/10/2025 🗓️</p>
+                <p class="ev-cat">رياضية</p>
+                <p class="ev-desc">بطولة تجمع فرقًا من مختلف المحافظات</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=3">التفاصيل</a>
+            </article>
+
+            <article class="col-md-4 event-card" data-cat-key="family" data-governorate="طرطوس" data-date="2025-10-25">
+                <h3 class="ev-title">معرض مسرح العائلة 🎭</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.03_d40d07d1.jpg" alt="Family theater">
+                <p class="ev-info">📍 طرطوس - 25/10/2025 🗓️</p>
+                <p class="ev-cat">عائلية</p>
+                <p class="ev-desc">عرض مسرحي للعائلات والأطفال</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=4">التفاصيل</a>
+            </article>
+
+            <article class="col-md-4 event-card" data-cat-key="tech" data-governorate="حمص" data-date="2025-10-30">
+                <h3 class="ev-title">مؤتمر التقنية والاختراعات 💻</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.02_42cbd8e6.jpg" alt="Tech conference">
+                <p class="ev-info">📍 حمص - 30/10/2025 🗓️</p>
+                <p class="ev-cat">تقنية</p>
+                <p class="ev-desc">مؤتمر يقدم محاضرات وورش عمل في مجال التقنية</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=5">التفاصيل</a>
+            </article>
+        </section>
+
+        <p id="no-events" class="text-center mt-4 text-danger fw-bold" style="display:none;">لا يوجد فعاليات حالياً</p>
+    </main>
+
+    <footer>
+        <p id="footerText">© 2025 جميع الحقوق محفوظة</p>
+        <p>📧 <a href="mailto:sami@gmail.com">sami@gmail.com</a></p>
+        <div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram fa-xl mx-3"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube fa-xl"></i></a>
+        </div>
+    </footer>
+
+    <button id="return-top" title="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        /* ======= ترجمة شاملة + فلترة + تفاصيل جاهزة ======= */
+
+        /* ترجمات شاملة (تأكد أن ترتيب العناصر في DOM يتطابق مع ترتيب النصوص هنا) */
+        const TRANSLATIONS_FULL = {
+            ar: {
+                siteTitle: "دليل فعاليات المدينة 📅",
+                nav1: "الرئيسية",
+                nav2: "الفعاليات",
+                nav3: "تفاصيل الفعالية",
+                nav4: "عن الدليل",
+                nav5: "اتصل بنا",
+                heading: "الفعاليات القادمة",
+                searchPlaceholder: "ابحث عن فعالية",
+                searchBtn: "بحث",
+                clearFilters: "مسح الفلاتر",
+                sortOptions: { "": "الترتيب", "newest": "الأحدث", "oldest": "الأقدم" },
+                categories: { music: "موسيقية", sport: "رياضية", culture: "ثقافية", family: "عائلية", tech: "تقنية" },
+                governoratePlaceholder: "جميع المحافظات",
+                g1: "دمشق",
+                g2: "ريف دمشق",
+                g3: "حلب",
+                g4: "حمص",
+                g5: "حماة",
+                g6: "اللاذقية",
+                g7: "طرطوس",
+                g8: "السويداء",
+                g9: "درعا",
+                g10: "دير الزور",
+                g11: "الرقة",
+                g12: "الحسكة",
+                g13: "إدلب",
+                g14: "القنيطرة",
+                noEvents: "لا يوجد فعاليات حاليًا",
+                detailsBtn: "التفاصيل",
+                rights: "© 2025 جميع الحقوق محفوظة",
+                events: [
+                    { title: "مهرجان الموسيقى 🎵", info: "📍 دمشق - 10/10/2025 🗓️", desc: "مهرجان موسيقي يقدم عروضًا حية لفرق وفنانين محليين" },
+                    { title: "معرض الفنون الحديثة 🎨", info: "📍 حلب - 15/10/2025 🗓️", desc: "معرض يجمع الأعمال الفنية لفنانين محليين" },
+                    { title: "بطولة كرة القدم المحلية ⚽", info: "📍 اللاذقية - 20/10/2025 🗓️", desc: "بطولة تجمع فرقًا من مختلف المحافظات" },
+                    { title: "معرض مسرح العائلة 🎭", info: "📍 طرطوس - 25/10/2025 🗓️", desc: "عرض مسرحي للعائلات والأطفال" },
+                    { title: "مؤتمر التقنية والاختراعات 💻", info: "📍 حمص - 30/10/2025 🗓️", desc: "مؤتمر يقدم محاضرات وورش عمل في مجال التقنية" }
+                ]
+            },
+            en: {
+                siteTitle: "City Events Guide 📅",
+                nav1: "Home",
+                nav2: "Events",
+                nav3: "Event Details",
+                nav4: "About Guide",
+                nav5: "Contact Us",
+                heading: "Upcoming Events",
+                searchPlaceholder: "Search for an event",
+                searchBtn: "Search",
+                clearFilters: "Clear filters",
+                sortOptions: { "": "Sort", "newest": "Newest", "oldest": "Oldest" },
+                categories: { music: "Musical", sport: "Sports", culture: "Cultural", family: "Family", tech: "Technical" },
+                governoratePlaceholder: "All governorates",
+                g1: "Damascus",
+                g2: "Damascus countrysite",
+                g3: "Aleppo",
+                g4: "Homs",
+                g5: "Hama",
+                g6: "Latakia",
+                g7: "Tartous",
+                g8: "Suwayda",
+                g9: "Daraa",
+                g10: "Deir ez-Zor",
+                g11: "Ar-Raqqah",
+                g12: "Al-Hasakah",
+                g13: "Idlib",
+                g14: "Kenitra",
+                noEvents: "No events available currently",
+                detailsBtn: "Details",
+                rights: "All rights reserved 2025 ©",
+                events: [
+                    { title: "Music festival 🎵", info: "📍 Damascus - 10/10/2025 🗓️", desc: "A music festival that offers live shows from local bands and artists" },
+                    { title: "Modern arts exhibition 🎨", info: "📍 Aleppo - 15/10/2025 🗓️", desc: "An exhibition gathering local artists' works" },
+                    { title: "Local football tournament ⚽", info: "📍 Latakia - 20/10/2025 🗓️", desc: "A tournament that brings teams from different governorates" },
+                    { title: "Family theater exhibition 🎭", info: "📍 Tartous - 25/10/2025 🗓️", desc: "A theatrical show for families and children" },
+                    { title: "Technology and invention conference 💻", info: "📍 Homs - 30/10/2025 🗓️", desc: "A conference with talks and workshops in tech" }
+                ]
+            }
+        };
+
+        /* عناصر الصفحة */
+        const el = {
+            siteTitle: document.getElementById('site-title'),
+            navLinks: Array.from(document.querySelectorAll('header nav ul li a')),
+            nav1: document.getElementById('nav1'),
+            nav2: document.getElementById('nav2'),
+            nav3: document.getElementById('nav3'),
+            nav4: document.getElementById('nav4'),
+            nav5: document.getElementById('nav5'),
+            rights: document.getElementById('rights'),
+            pageHeading: document.getElementById('page-heading'),
+            searchInput: document.getElementById('search-input'),
+            searchBtn: document.getElementById('search-btn'),
+            categorySelect: document.getElementById('category-select'),
+            governorateSelect: document.getElementById('governorate-select'),
+            g1: document.getElementById('g1'),
+            g2: document.getElementById('g2'),
+            g3: document.getElementById('g3'),
+            g4: document.getElementById('g4'),
+            g5: document.getElementById('g5'),
+            g6: document.getElementById('g6'),
+            g7: document.getElementById('g7'),
+            g8: document.getElementById('g8'),
+            g9: document.getElementById('g9'),
+            g10: document.getElementById('g10'),
+            g11: document.getElementById('g11'),
+            g12: document.getElementById('g12'),
+            g13: document.getElementById('g13'),
+            g14: document.getElementById('g14'),
+            sortSelect: document.getElementById('sort-select'),
+            clearFiltersBtn: document.getElementById('clear-filters'),
+            noEvents: document.getElementById('no-events'),
+            footerText: document.getElementById('footer-text'),
+            eventCards: Array.from(document.querySelectorAll('.event-card'))
+        };
+
+        /* دالة تطبق ترجمة كاملة */
+        function setLanguageFull(lang)
+        {
+            const T = TRANSLATIONS_FULL[lang] || TRANSLATIONS_FULL.ar;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.body.style.textAlign = (lang === 'ar') ? 'right' : 'left';
+
+            if (el.siteTitle) el.siteTitle.textContent = T.siteTitle;
+            if (el.nav1) el.nav1.textContent = T.nav1;
+            if (el.nav2) el.nav2.textContent = T.nav2;
+            if (el.nav3) el.nav3.textContent = T.nav3;
+            if (el.nav4) el.nav4.textContent = T.nav4;
+            if (el.nav5) el.nav5.textContent = T.nav5;
+            if (el.g1) el.g1.textContent = T.g1;
+            if (el.g2) el.g2.textContent = T.g2;
+            if (el.g3) el.g3.textContent = T.g3;
+            if (el.g4) el.g4.textContent = T.g4;
+            if (el.g5) el.g5.textContent = T.g5;
+            if (el.g6) el.g6.textContent = T.g6;
+            if (el.g7) el.g7.textContent = T.g7;
+            if (el.g8) el.g8.textContent = T.g8;
+            if (el.g9) el.g9.textContent = T.g9;
+            if (el.g10) el.g10.textContent = T.g10;
+            if (el.g11) el.g11.textContent = T.g11;
+            if (el.g12) el.g12.textContent = T.g12;
+            if (el.g13) el.g13.textContent = T.g13;
+            if (el.g14) el.g14.textContent = T.g14;
+            if (el.pageHeading) el.pageHeading.textContent = T.heading;
+            if (el.searchInput) el.searchInput.placeholder = T.searchPlaceholder;
+            if (el.searchBtn) el.searchBtn.textContent = T.searchBtn;
+            if (el.clearFiltersBtn) el.clearFiltersBtn.textContent = T.clearFilters;
+            if (el.footerText) el.footerText.textContent = T.footer;
+            if (el.noEvents) el.noEvents.textContent = T.noEvents;
+            if (el.rights) el.rights.textContent = T.rights;
+
+            // update category select labels (preserve values)
+            if (el.categorySelect) {
+                for (let i = 0; i < el.categorySelect.options.length; i++) {
+                    const opt = el.categorySelect.options[i];
+                    if (opt.value === "") { opt.text = "جميع التصنيفات" && (lang === 'ar'); } // keep placeholder default (we change below)
+                    const val = opt.value;
+                    if (val && T.categories[val]) opt.text = T.categories[val];
+                    if (val === "" && lang === 'en') opt.text = "All categories";
+                    if (val === "" && lang === 'ar') opt.text = "جميع التصنيفات";
+
+                }
+            }
+
+            // update sort select labels
+            if (el.sortSelect) {
+                for (let i = 0; i < el.sortSelect.options.length; i++) {
+                    const val = el.sortSelect.options[i].value;
+                    el.sortSelect.options[i].text = T.sortOptions[val] || el.sortSelect.options[i].text;
+                }
+            }
+
+            // update event cards (titles, info, desc, category label, details button)
+            el.eventCards.forEach((card, idx) => {
+                const t = T.events[idx];
+                if (!t) return;
+                const titleEl = card.querySelector('.ev-title') || card.querySelector('h3');
+                if (titleEl) titleEl.textContent = t.title;
+                const infoEl = card.querySelector('.ev-info');
+                if (infoEl) infoEl.textContent = t.info;
+                const descEl = card.querySelector('.ev-desc');
+                if (descEl) descEl.textContent = t.desc;
+                const catLabelEl = card.querySelector('.ev-cat');
+                const key = card.getAttribute('data-cat-key');
+                if (catLabelEl && key && T.categories[key]) catLabelEl.textContent = T.categories[key];
+                const btn = card.querySelector('.ev-detail') || card.querySelector('a.btn');
+                if (btn) btn.textContent = T.detailsBtn;
+            });
+
+            // governorate select placeholder translation
+            if (el.governorateSelect) {
+                for (let i = 0; i < el.governorateSelect.options.length; i++) {
+                    if (i === 0) {
+                        el.governorateSelect.options[i].text = (lang === 'ar') ? 'جميع المحافظات' : 'All governorates';
+                    }
+                }
+            }
+
+            // update no-events visibility text already done above
+        }
+
+        /* تهيئة افتراضية - العربية */
+        setLanguageFull('ar');
+
+        /* أعلام الترجمة */
+        document.getElementById('ar-flag')?.addEventListener('click', () => setLanguageFull('ar'));
+        document.getElementById('en-flag')?.addEventListener('click', () => setLanguageFull('en'));
+
+        /* ----------------- باقي الوظائف: فلترة، لا فعاليات، تفاصيل، عودة أعلى ----------------- */
+
+        function applyFilters() {
+            const q = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+            const catKey = (document.getElementById('category-select')?.value || '').trim().toLowerCase();
+            const gov = (document.getElementById('governorate-select')?.value || '').trim().toLowerCase();
+            const sort = (document.getElementById('sort-select')?.value || '').trim();
+
+            const cards = Array.from(document.querySelectorAll('.event-card'));
+            cards.forEach(card => {
+                const title = (card.querySelector('.ev-title')?.textContent || card.querySelector('h3')?.textContent || '').toLowerCase();
+                const desc = (card.querySelector('.ev-desc')?.textContent || '').toLowerCase();
+                const itemKey = (card.getAttribute('data-cat-key') || '').toLowerCase();
+                const itemGov = (card.getAttribute('data-governorate') || '').toLowerCase();
+                let show = true;
+                if (q && !(title.includes(q) || desc.includes(q))) show = false;
+                if (catKey && catKey !== '' && itemKey !== catKey) show = false;
+                if (gov && gov !== '' && itemGov !== gov) show = false;
+                card.style.display = show ? '' : 'none';
+            });
+
+            // sorting
+            if (sort) {
+                const container = document.getElementById('events-list');
+                const visible = Array.from(container.querySelectorAll('.event-card')).filter(c => c.style.display !== 'none');
+                visible.sort((a, b) => {
+                    const da = new Date(a.getAttribute('data-date') || '');
+                    const db = new Date(b.getAttribute('data-date') || '');
+                    return sort === 'newest' ? (db - da) : (da - db);
+                });
+                visible.forEach(n => container.appendChild(n));
+            }
+
+            // show/hide no-events message
+            const visibleCount = Array.from(document.querySelectorAll('.event-card')).filter(c => c.style.display !== 'none').length;
+            const noEl = document.getElementById('no-events');
+            if (noEl) noEl.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        /* وصل الأحداث */
+        document.getElementById('search-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyFilters(); });
+        document.getElementById('category-select')?.addEventListener('change', applyFilters);
+        document.getElementById('governorate-select')?.addEventListener('change', applyFilters);
+        document.getElementById('sort-select')?.addEventListener('change', applyFilters);
+        document.getElementById('clear-filters')?.addEventListener('click', () => {
+            if (document.getElementById('search-input')) document.getElementById('search-input').value = '';
+            if (document.getElementById('category-select')) document.getElementById('category-select').value = '';
+            if (document.getElementById('governorate-select')) document.getElementById('governorate-select').value = '';
+            if (document.getElementById('sort-select')) document.getElementById('sort-select').value = '';
+            document.querySelectorAll('.event-card').forEach(c => c.style.display = '');
+            document.getElementById('no-events') && (document.getElementById('no-events').style.display = 'none');
+            history.replaceState(null, '', 'events.html');
+        });
+
+        /* تجهيز أزرار التفاصيل: إذا لم يكن href يحتوي ?id= نعيّن id افتراضي idx+1 */
+        document.querySelectorAll('.event-card').forEach((card, idx) => {
+            const btn = card.querySelector('.ev-detail') || card.querySelector('a.btn');
+            if (btn) {
+                const href = btn.getAttribute('href') || '';
+                if (!/\?id=/.test(href)) {
+                    const dataId = card.getAttribute('data-id') || (idx + 1);
+                    btn.setAttribute('href', `event.html?id=${encodeURIComponent(dataId)}`);
+                }
+            }
+        });
+
+        /* قراءة ?category= أو ?cat= عند التحميل لتطبيق الفلتر تلقائياً.
+           نقبل المفتاح (music) أو النص العربي/الانجليزي؛ نحاول التعرف عليه ونضبط select ثم applyFilters()
+        */
+        (function applyCategoryFromQuery() {
+            const params = new URLSearchParams(window.location.search);
+            const catParam = params.get('category') || params.get('cat');
+            if (!catParam) { applyFilters(); return; }
+            const knownKeys = ['music', 'sport', 'culture', 'family', 'tech'];
+            const val = decodeURIComponent(catParam).trim();
+            const lower = val.toLowerCase();
+
+            // direct key
+            if (knownKeys.includes(lower)) {
+                document.getElementById('category-select') && (document.getElementById('category-select').value = lower);
+                applyFilters();
+                return;
+            }
+
+            // else try match option texts (both ar/en) to find value
+            const catSelect = document.getElementById('category-select');
+            if (catSelect) {
+                for (let i = 0; i < catSelect.options.length; i++) {
+                    const opt = catSelect.options[i];
+                    if (opt.text.trim().toLowerCase() === lower || opt.value.trim().toLowerCase() === lower) {
+                        catSelect.value = opt.value;
+                        break;
+                    }
+                }
+                applyFilters();
+            }
+        })();
+        const returnBtn = document.getElementById('return-top');
+        window.addEventListener('scroll', () => {
+            returnBtn.style.display = window.scrollY > 200 ? 'flex' : 'none';
+        });
+        returnBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

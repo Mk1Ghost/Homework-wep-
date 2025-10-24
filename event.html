@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الفعاليات - دليل فعاليات المدينة</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d0e6b00386.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            direction: rtl;
+        }
+
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+        }
+
+            header h1 {
+                margin-bottom: 10px;
+            }
+
+            header ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+                margin: 0;
+            }
+
+            header a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                header a:hover {
+                    color: #0d6efd;
+                }
+
+        #flags {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .flag {
+            width: 36px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+            .event-card img {
+                width: 100%;
+                border-radius: 6px;
+                margin-bottom: 10px;
+            }
+
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+            footer a {
+                color: #0d6efd;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
+        #return-top {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+            #return-top:hover {
+                background-color: #0b5ed7;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div id="flags">
+            <img src="https://flagcdn.com/w20/sy.png" class="flag" id="ar-flag" alt="عربي">
+            <img src="https://flagcdn.com/w20/us.png" class="flag" id="en-flag" alt="English">
+        </div>
+
+        <h1 id="title">📅 دليل فعاليات المدينة</h1>
+        <nav>
+            <ul>
+                <li><a id="nav1" href="index.html">الرئيسية</a></li>
+                <li><a id="nav2" href="events.html">الفعاليات</a></li>
+                <li><a id="nav3" href="event.html">تفاصيل الفعالية</a></li>
+                <li><a id="nav4" href="about.html">عن الدليل</a></li>
+                <li><a id="nav5" href="contact.html">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 id="page-title" class="text-center mb-4">تفاصيل الفعاليات</h2>
+
+        <section id="events-container">
+            <!-- فعاليات -->
+            <div class="col-md-4 event-card" data-id="1">
+                <h3 class="ev-title">مهرجان الموسيقى 🎵</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.33.07_6cb316af.jpg" alt="Music festival">
+                <p class="ev-info">📍 دمشق - 10/10/2025 🗓️</p>
+                <p class="ev-desc">مهرجان موسيقي يقدم عروض حية من فرق وفنانين محليين وعالميين اجواء فنية ممتعة للحضور ومناطق ترفيهية مناسبة لجميع الاعمار فرصة للتعرف على مواهب جديدة والاستمتاع بالموسيقى</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=1">التفاصيل</a>
+            </div>
+
+            <div class="col-md-4 event-card" data-id="2">
+                <h3 class="ev-title">معرض الفنون الحديثة 🎨</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.55.45_30fae4a2.jpg" alt="Modern arts exhibition">
+                <p class="ev-info">📍 حلب - 15/10/2025 🗓️</p>
+                <p class="ev-desc">معرض فني يضم اعمال لفنانين معاصرين يعرضون ابداعهم في الرسم والنحت اجواء فنية مبدعة تشجع على التبادل الثقافي والتعبير عن الذات مناسبة لمحبي الفن والمهتمين بالابداع</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=2">التفاصيل</a>
+            </div>
+
+            <div class="col-md-4 event-card" data-id="3">
+                <h3 class="ev-title">بطولة كرة القدم المحلية ⚽</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-24 في 13.20.52_10a6807d.jpg" alt="Football tournament">
+                <p class="ev-info">📍 اللاذقية - 20/10/2025 🗓️</p>
+                <p class="ev-desc">دوري رياضي يجمع فرق من محافظات مختلفة يتنافسون في اجواء حماسية الفعالية تستقطب محبي كرة القدم وتشجع على الروح الرياضية فرصة لقضاء وقت ممتع مع الاصدقاء والعائلة</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=3">التفاصيل</a>
+            </div>
+
+            <div class="col-md-4 event-card" data-id="4">
+                <h3 class="ev-title">معرض مسرح العائلة 🎭</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.03_d40d07d1.jpg" alt="Family theater">
+                <p class="ev-info">📍 طرطوس - 25/10/2025 🗓️</p>
+                <p class="ev-desc">عرض مسرحي موجه للاطفال والعائلات يتضمن فقرات ترفيهية ممتعة يهدف الى نشر الفرح وتشجيع المشاركة الاسرية نشاط مناسب لكل الاعمار باجواء مريحة وبسيطة</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=4">التفاصيل</a>
+            </div>
+
+            <div class="col-md-4 event-card" data-id="5">
+                <h3 class="ev-title">مؤتمر التقنية والاختراعات 💻</h3>
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.02_42cbd8e6.jpg" alt="Tech conference">
+                <p class="ev-info">📍 حمص - 30/10/2025 🗓️</p>
+                <p class="ev-desc">مؤتمر يجمع خبراء ورواد اعمال لمناقشة احدث الابتكارات التقنية يضم جلسات حوارية ومحاضرات حول التحول الرقمي والذكاء الاصطناعي فرصة للتواصل بين المتخصصين والمهتمين بالتكنولوجيا</p>
+                <a class="btn btn-outline-primary ev-detail" href="event.html?id=5">التفاصيل</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p id="footerText">© 2025 جميع الحقوق محفوظة</p>
+        <p>📧 <a href="mailto:sami@gmail.com">sami@gmail.com</a></p>
+        <div>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram fa-xl mx-3"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube fa-xl"></i></a>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="return-top" title="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // زر العودة للأعلى
+        const returnBtn = document.getElementById('return-top');
+        window.addEventListener('scroll', () => {
+            returnBtn.style.display = window.scrollY > 200 ? 'flex' : 'none';
+        });
+        returnBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // الترجمة
+        const translations = {
+            ar: {
+                title: "📅 دليل فعاليات المدينة",
+                nav: ["الرئيسية", "الفعاليات", "تفاصيل الفعالية", "عن الدليل", "اتصل بنا"],
+                pageTitle: "تفاصيل الفعاليات",
+                footer: "© 2025 جميع الحقوق محفوظة",
+                detailsBtn: "التفاصيل",
+                 events: [
+                     { title: "مهرجان الموسيقى 🎵", info: "📍 دمشق - 10/10/2025 🗓️", desc: "مهرجان موسيقي يقدم عروض حية من فرق وفنانين محليين وعالميين اجواء فنية ممتعة للحضور ومناطق ترفيهية مناسبة لجميع الاعمار فرصة للتعرف على مواهب جديدة والاستمتاع بالموسيقى"},
+                     { title: "معرض الفنون الحديثة 🎨", info: "📍 حلب - 15/10/2025 🗓️", desc: "معرض فني يضم اعمال لفنانين معاصرين يعرضون ابداعهم في الرسم والنحت اجواء فنية مبدعة تشجع على التبادل الثقافي والتعبير عن الذات مناسبة لمحبي الفن والمهتمين بالابداع"},
+                     { title: "بطولة كرة القدم المحلية ⚽", info: "📍 اللاذقية - 20/10/2025 🗓️", desc: "دوري رياضي يجمع فرق من محافظات مختلفة يتنافسون في اجواء حماسية الفعالية تستقطب محبي كرة القدم وتشجع على الروح الرياضية فرصة لقضاء وقت ممتع مع الاصدقاء والعائلة"},
+                     { title: "معرض مسرح العائلة 🎭", info: "📍 طرطوس - 25/10/2025 🗓️", desc: "عرض مسرحي موجه للاطفال والعائلات يتضمن فقرات ترفيهية ممتعة يهدف الى نشر الفرح وتشجيع المشاركة الاسرية نشاط مناسب لكل الاعمار باجواء مريحة وبسيطة"},
+                     { title: "مؤتمر التقنية والاختراعات 💻", info: "📍 حمص - 30/10/2025 🗓️", desc: "مؤتمر يجمع خبراء ورواد اعمال لمناقشة احدث الابتكارات التقنية يضم جلسات حوارية ومحاضرات حول التحول الرقمي والذكاء الاصطناعي فرصة للتواصل بين المتخصصين والمهتمين بالتكنولوجيا"}
+                ]
+            },
+            en: {
+                title: "City Events Guide 📅",
+                nav: ["Home", "Events", "Event Details", "About Guide", "Contact Us"],
+                pageTitle: "Event Details",
+                footer: "All rights reserved 2025 ©",
+                detailsBtn: "Details",
+                 events: [
+                     { title: "Music festival 🎵", info: "📍 Damascus - 10/10/2025 🗓️", desc: "A music festival that offers live shows form local or global bands and artists artistic and fun ambiance for the crowd and entertaining lcoations suitable for all ages an opportunity to discover new skills and to enjoy the music"},
+                     { title: "Modern arts exhibition 🎨", info: "📍 Aleppo - 15/10/2025 🗓️", desc: "An art exhibit that includes the artworks of contemporary artists who display their creativity through drawing and sculpting artistic and creative ambience that encourages cultural sharing and self expression suitable for art fans and people interested in creativity"},
+                     { title: "Local football tournament ⚽", info: "📍 Latakia - 20/10/2025 🗓️", desc: "A sport competition that gathers teams from different governorates who compete in thrilling ambiances this event attracts football fans and encourages sportsmanship an opportunity to spend an enjoyable time with friends and family"},
+                     { title: "Family theater exhibition 🎭", info: "📍 Tartous - 25/10/2025 🗓️", desc: "A theaterical show dedicated to children and families, includes fun and entertaining sessions this event aims to bring joy to the audience and strengthen the bonds between family members a suitable activity for all ages in a comfortable and calming ambience"},
+                     { title: "Technology and invention conference 💻", info: "📍 Homs - 30/10/2025 🗓️", desc: "A conference that brings together specialists and pioneers to discuss the latest technical inventions includes discussion sessions and lectures about Artificial Intelligence an opportunity for specialists and the people interested in technology to communicate with eachother"}
+                ]
+            }
+        };
+        const el = {
+            eventCards: Array.from(document.querySelectorAll('.event-card'))
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById("title").textContent = t.title;
+            document.getElementById("nav1").textContent = t.nav[0];
+            document.getElementById("nav2").textContent = t.nav[1];
+            document.getElementById("nav3").textContent = t.nav[2];
+            document.getElementById("nav4").textContent = t.nav[3];
+            document.getElementById("nav5").textContent = t.nav[4];
+            document.getElementById("page-title").textContent = t.pageTitle;
+            document.getElementById("footerText").textContent = t.footer;
+            document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+           
+       el.eventCards.forEach((card, idx) => {
+                const T = t.events[idx];
+                if (!T) return;
+                const titleEl = card.querySelector('.ev-title') || card.querySelector('h3');
+                if (titleEl) titleEl.textContent = T.title;
+                const infoEl = card.querySelector('.ev-info');
+                if (infoEl) infoEl.textContent = T.info;
+                const descEl = card.querySelector('.ev-desc');
+                if (descEl) descEl.textContent = T.desc;
+                const catLabelEl = card.querySelector('.ev-cat');
+                const key = card.getAttribute('data-cat-key');
+                if (catLabelEl && key && T.categories[key]) catLabelEl.textContent = t.categories[key];
+                const btn = card.querySelector('.ev-detail') || card.querySelector('a.btn');
+                if (btn) btn.textContent = t.detailsBtn;
+            });
+
+        }
+
+        document.getElementById("ar-flag").addEventListener("click", () => setLanguage("ar"));
+        document.getElementById("en-flag").addEventListener("click", () => setLanguage("en"));
+
+        // عرض فعالية واحدة فقط عند وجود ?id
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get("id");
+        if (eventId) {
+            document.querySelectorAll(".event-card").forEach(card => {
+                if (card.getAttribute("data-id") !== eventId) card.style.display = "none";
+            });
+        }
+        history.replaceState(null, '', 'events.html');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الرئيسية - دليل فعاليات المدينة</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/d0e6b00386.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #0d6efd;
+        }
+
+        body {
+            font-family: "Tahoma", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #222;
+            direction: rtl;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 14px 0;
+            text-align: center;
+        }
+
+            header nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 0 0;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            header nav a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+        #flags {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .flag {
+            width: 36px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* تصنيفات الفعاليات */
+        #categories button {
+            margin: 6px;
+            border: none;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+            background: black;
+        }
+
+            #categories button:nth-child(2) {
+                background: #28a745;
+                color: black;
+            }
+
+            #categories button:nth-child(3) {
+                background: #ffc107;
+                color: black;
+            }
+
+            #categories button:nth-child(4) {
+                background: #17a2b8;
+                color: black;
+            }
+
+            #categories button:nth-child(5) {
+                background: #6f42c1;
+                color: black;
+            }
+
+            #categories button:hover {
+                opacity: 0.6;
+            }
+
+        /* الفعاليات */
+        .event-card {
+            background: #9a818b;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 12px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+            .event-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+            footer a {
+                color: #0d6efd;
+                text-decoration: none;
+            }
+
+        #return-top {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+            #return-top:hover {
+                background-color: #0b5ed7;
+            }
+    </style>
+</head>
+
+<body>
+    <!-- أعلام الترجمة -->
+    <div id="flags">
+        <img id="ar-flag" class="flag" src="https://flagcdn.com/w20/sy.png" alt="عربي" />
+        <img id="en-flag" class="flag" src="https://flagcdn.com/w20/us.png" alt="English" />
+    </div>
+
+    <!-- رأس الصفحة -->
+    <header>
+        <h1 id="site-title">📅 دليل فعاليات المدينة</h1>
+        <nav>
+            <ul>
+                <li><a id="nav-home" href="index.html">الرئيسية</a></li>
+                <li><a id="nav-events" href="events.html">الفعاليات</a></li>
+                <li><a id="nav-detail" href="event.html">تفاصيل الفعالية</a></li>
+                <li><a id="nav-about" href="about.html">عن الدليل</a></li>
+                <li><a id="nav-contact" href="contact.html">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- المحتوى -->
+    <main>
+        <section>
+            <h2 id="welcome-title">مرحبًا بكم في دليل فعاليات المدينة</h2>
+            <p id="welcome-text">
+                يهدف هذا الموقع إلى جمع أبرز الفعاليات الثقافية والرياضية والفنية في مختلف المحافظات، وتوفير وسيلة سهلة وسريعة للتعرف على الأحداث القادمة والمشاركة فيها.
+            </p>
+        </section>
+
+        <!-- التصنيفات -->
+        <section id="categories">
+            <h3 id="cat-title">التصنيفات</h3>
+            <button id="c1" onclick="location.href='events.html?category=music'">فعاليات موسيقية</button>
+            <button id="c2" onclick="location.href='events.html?category=sport'">فعاليات رياضية</button>
+            <button id="c3" onclick="location.href='events.html?category=culture'">فعاليات ثقافية</button>
+            <button id="c4" onclick="location.href='events.html?category=family'">فعاليات عائلية</button>
+            <button id="c5" onclick="location.href='events.html?category=tech'">فعاليات تقنية</button>
+        </section>
+
+        <!-- أبرز الفعاليات -->
+        <section id="featured">
+            <h3 id="featured-title">أبرز الفعاليات</h3>
+            <div class="event-card">
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.33.07_6cb316af.jpg" alt="Music festival" />
+            </div>
+            <div class="event-card">
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-24 في 13.20.52_10a6807d.jpg" alt="Football tournament" />
+            </div>
+        </section>
+
+        <!-- أحدث الفعاليات -->
+        <section id="latest">
+            <h3 id="latest-title">أحدث الفعاليات</h3>
+            <div class="event-card">
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.02_42cbd8e6.jpg" alt="Tech event" />
+            </div>
+            <div class="event-card">
+                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.03_d40d07d1.jpg" alt="Family theater" />
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة -->
+    <footer>
+        <p id="footer-text">© 2025 جميع الحقوق محفوظة</p>
+        <p>📧 <a href="mailto:sami@gmail.com">sami@gmail.com</a></p>
+        <ul class="list-unstyled d-flex justify-content-center gap-4 fs-4">
+            <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+        </ul>
+    </footer>
+
+    <button id="return-top" title="العودة للأعلى">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        const translations = {
+            ar: {
+                title: "📅 دليل فعاليات المدينة",
+                home: "الرئيسية",
+                events: "الفعاليات",
+                detail: "تفاصيل الفعالية",
+                about: "عن الدليل",
+                contact: "اتصل بنا",
+                welcomeTitle: "مرحبًا بكم في دليل فعاليات المدينة",
+                welcomeText:
+                    "يهدف هذا الموقع إلى جمع أبرز الفعاليات الثقافية والرياضية والفنية في مختلف المحافظات، وتوفير وسيلة سهلة وسريعة للتعرف على الأحداث القادمة والمشاركة فيها.",
+                c1: "فعاليات موسيقية",
+                c2: "فعاليات رياضية",
+                c3: "فعاليات ثقافية",
+                c4: "فعاليات عائلية",
+                c5: "فعاليات تقنية",
+
+                catTitle: "التصنيفات",
+                featured: "أبرز الفعاليات",
+                latest: "أحدث الفعاليات",
+                footer: "© 2025 جميع الحقوق محفوظة",
+            },
+            en: {
+                title: "City Events Guide 📅",
+                home: "Home",
+                events: "Events",
+                detail: "Event Details",
+                about: "About Guide",
+                contact: "Contact Us",
+                welcomeTitle: "Welcome to City Events Guide",
+                welcomeText:
+                    "This website aims to gather cultural, sports, and art events in various governorates and provide an easy and fast way to learn about upcoming events.",
+                c1: "Musical Events",
+                c2: "Sports Events",
+                c3: "Cultural Events",
+                c4: "Family Events",
+                c5: "Technical Events",
+                catTitle: "Categories",
+                featured: "Featured Events",
+                latest: "Latest Events",
+                footer: "All rights reserved 2025 ©",
+            },
+        };
+
+        const setLang = (lang) => {
+            const T = translations[lang];
+            document.getElementById("site-title").textContent = T.title;
+            document.getElementById("nav-home").textContent = T.home;
+            document.getElementById("nav-events").textContent = T.events;
+            document.getElementById("nav-detail").textContent = T.detail;
+            document.getElementById("nav-about").textContent = T.about;
+            document.getElementById("nav-contact").textContent = T.contact;
+            document.getElementById("welcome-title").textContent = T.welcomeTitle;
+            document.getElementById("welcome-text").textContent = T.welcomeText;
+            document.getElementById("c1").textContent = T.c1;
+            document.getElementById("c2").textContent = T.c2;
+            document.getElementById("c3").textContent = T.c3;
+            document.getElementById("c4").textContent = T.c4;
+            document.getElementById("c5").textContent = T.c5;
+            document.getElementById("cat-title").textContent = T.catTitle;
+            document.getElementById("featured-title").textContent = T.featured;
+            document.getElementById("latest-title").textContent = T.latest;
+            document.getElementById("footer-text").textContent = T.footer;
+
+            document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        };
+
+        // اللغة الافتراضية عربية
+        setLang("ar");
+        document.getElementById("ar-flag").addEventListener("click", () => setLang("ar"));
+        document.getElementById("en-flag").addEventListener("click", () => setLang("en"));
+
+        // زر العودة للأعلى
+        const returnBtn = document.getElementById('return-top');
+        window.addEventListener('scroll', () => {
+            returnBtn.style.display = window.scrollY > 200 ? 'flex' : 'none';
+        });
+        returnBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
