@@ -131,7 +131,7 @@
 </head>
 <body>
 
-    <!-- Flags -->
+    <!--الاعلام -->
     <div id="flags">
         <img id="ar-flag" class="flag" src="https://flagcdn.com/w20/sy.png" alt="عربي">
         <img id="en-flag" class="flag" src="https://flagcdn.com/w20/us.png" alt="English">
@@ -207,11 +207,11 @@
             </div>
         </section>
 
-        <!-- Events -->
+        <!-- الفعاليات -->
         <section id="events-list" class="row g-3">
             <article class="col-md-4 event-card" data-cat-key="music" data-governorate="دمشق" data-date="2025-10-10">
                 <h3 class="ev-title">مهرجان الموسيقى 🎵</h3>
-                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.33.07_6cb316af.jpg" alt="Music festival">
+                <img src="test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.33.07_6cb316af.jpg" alt="Music festival">
                 <p class="ev-info" >📍 دمشق - 10/10/2025 🗓️</p>
                 <p class="ev-cat">موسيقية</p>
                 <p class="ev-desc">مهرجان موسيقي يقدم عروضًا حية لفرق وفنانين محليين</p>
@@ -220,7 +220,7 @@
 
             <article class="col-md-4 event-card" data-cat-key="culture" data-governorate="حلب" data-date="2025-10-15">
                 <h3 class="ev-title">معرض الفنون الحديثة 🎨</h3>
-                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.55.45_30fae4a2.jpg" alt="Arts exhibition">
+                <img src="IMG\صورة واتساب بتاريخ 2025-10-21 في 14.55.45_30fae4a2.jpg" alt="Arts exhibition">
                 <p class="ev-info">📍 حلب - 15/10/2025 🗓️</p>
                 <p class="ev-cat">ثقافية</p>
                 <p class="ev-desc">معرض يجمع الأعمال الفنية لفنانين محليين</p>
@@ -229,7 +229,7 @@
 
             <article class="col-md-4 event-card" data-cat-key="sport" data-governorate="اللاذقية" data-date="2025-10-20">
                 <h3 class="ev-title">بطولة كرة القدم المحلية ⚽</h3>
-                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-24 في 13.20.52_10a6807d.jpg" alt="Football tournament">
+                <img src="IMG\صورة واتساب بتاريخ 2025-10-24 في 13.20.52_10a6807d.jpg" alt="Football tournament">
                 <p class="ev-info">📍 اللاذقية - 20/10/2025 🗓️</p>
                 <p class="ev-cat">رياضية</p>
                 <p class="ev-desc">بطولة تجمع فرقًا من مختلف المحافظات</p>
@@ -238,7 +238,7 @@
 
             <article class="col-md-4 event-card" data-cat-key="family" data-governorate="طرطوس" data-date="2025-10-25">
                 <h3 class="ev-title">معرض مسرح العائلة 🎭</h3>
-                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.03_d40d07d1.jpg" alt="Family theater">
+                <img src="IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.03_d40d07d1.jpg" alt="Family theater">
                 <p class="ev-info">📍 طرطوس - 25/10/2025 🗓️</p>
                 <p class="ev-cat">عائلية</p>
                 <p class="ev-desc">عرض مسرحي للعائلات والأطفال</p>
@@ -247,7 +247,7 @@
 
             <article class="col-md-4 event-card" data-cat-key="tech" data-governorate="حمص" data-date="2025-10-30">
                 <h3 class="ev-title">مؤتمر التقنية والاختراعات 💻</h3>
-                <img src="C:\Users\Sami Pc\Desktop\test\IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.02_42cbd8e6.jpg" alt="Tech conference">
+                <img src="IMG\صورة واتساب بتاريخ 2025-10-21 في 14.32.02_42cbd8e6.jpg" alt="Tech conference">
                 <p class="ev-info">📍 حمص - 30/10/2025 🗓️</p>
                 <p class="ev-cat">تقنية</p>
                 <p class="ev-desc">مؤتمر يقدم محاضرات وورش عمل في مجال التقنية</p>
@@ -273,9 +273,7 @@
     </button>
 
     <script>
-        /* ======= ترجمة شاملة + فلترة + تفاصيل جاهزة ======= */
-
-        /* ترجمات شاملة (تأكد أن ترتيب العناصر في DOM يتطابق مع ترتيب النصوص هنا) */
+       // الترجمة
         const TRANSLATIONS_FULL = {
             ar: {
                 siteTitle: "دليل فعاليات المدينة 📅",
@@ -393,7 +391,7 @@
             eventCards: Array.from(document.querySelectorAll('.event-card'))
         };
 
-        /* دالة تطبق ترجمة كاملة */
+        // تطبيق ترجمة كاملة 
         function setLanguageFull(lang)
         {
             const T = TRANSLATIONS_FULL[lang] || TRANSLATIONS_FULL.ar;
@@ -429,7 +427,7 @@
             if (el.noEvents) el.noEvents.textContent = T.noEvents;
             if (el.rights) el.rights.textContent = T.rights;
 
-            // update category select labels (preserve values)
+            //valueلتحديث قوائم الفعاليات حسب ال
             if (el.categorySelect) {
                 for (let i = 0; i < el.categorySelect.options.length; i++) {
                     const opt = el.categorySelect.options[i];
@@ -442,7 +440,7 @@
                 }
             }
 
-            // update sort select labels
+            // لتحديث نوع القوائم
             if (el.sortSelect) {
                 for (let i = 0; i < el.sortSelect.options.length; i++) {
                     const val = el.sortSelect.options[i].value;
@@ -450,7 +448,7 @@
                 }
             }
 
-            // update event cards (titles, info, desc, category label, details button)
+            //تحديث كروت الفعالية 
             el.eventCards.forEach((card, idx) => {
                 const t = T.events[idx];
                 if (!t) return;
@@ -467,7 +465,7 @@
                 if (btn) btn.textContent = T.detailsBtn;
             });
 
-            // governorate select placeholder translation
+            // لترجمة فلتر المحافظات
             if (el.governorateSelect) {
                 for (let i = 0; i < el.governorateSelect.options.length; i++) {
                     if (i === 0) {
@@ -476,17 +474,17 @@
                 }
             }
 
-            // update no-events visibility text already done above
+            
         }
 
-        /* تهيئة افتراضية - العربية */
+        /* تهيئة افتراضية العربية */
         setLanguageFull('ar');
 
-        /* أعلام الترجمة */
+        /* الاعلام */
         document.getElementById('ar-flag')?.addEventListener('click', () => setLanguageFull('ar'));
         document.getElementById('en-flag')?.addEventListener('click', () => setLanguageFull('en'));
 
-        /* ----------------- باقي الوظائف: فلترة، لا فعاليات، تفاصيل، عودة أعلى ----------------- */
+       
 
         function applyFilters() {
             const q = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
@@ -507,7 +505,7 @@
                 card.style.display = show ? '' : 'none';
             });
 
-            // sorting
+            // ترتيب
             if (sort) {
                 const container = document.getElementById('events-list');
                 const visible = Array.from(container.querySelectorAll('.event-card')).filter(c => c.style.display !== 'none');
@@ -519,13 +517,13 @@
                 visible.forEach(n => container.appendChild(n));
             }
 
-            // show/hide no-events message
+            // اظهار رسالة لا يوجد فعاليات
             const visibleCount = Array.from(document.querySelectorAll('.event-card')).filter(c => c.style.display !== 'none').length;
             const noEl = document.getElementById('no-events');
             if (noEl) noEl.style.display = visibleCount === 0 ? 'block' : 'none';
         }
 
-        /* وصل الأحداث */
+        
         document.getElementById('search-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyFilters(); });
         document.getElementById('category-select')?.addEventListener('change', applyFilters);
         document.getElementById('governorate-select')?.addEventListener('change', applyFilters);
@@ -540,7 +538,7 @@
             history.replaceState(null, '', 'events.html');
         });
 
-        /* تجهيز أزرار التفاصيل: إذا لم يكن href يحتوي ?id= نعيّن id افتراضي idx+1 */
+        
         document.querySelectorAll('.event-card').forEach((card, idx) => {
             const btn = card.querySelector('.ev-detail') || card.querySelector('a.btn');
             if (btn) {
@@ -552,9 +550,7 @@
             }
         });
 
-        /* قراءة ?category= أو ?cat= عند التحميل لتطبيق الفلتر تلقائياً.
-           نقبل المفتاح (music) أو النص العربي/الانجليزي؛ نحاول التعرف عليه ونضبط select ثم applyFilters()
-        */
+       
         (function applyCategoryFromQuery() {
             const params = new URLSearchParams(window.location.search);
             const catParam = params.get('category') || params.get('cat');
@@ -563,14 +559,14 @@
             const val = decodeURIComponent(catParam).trim();
             const lower = val.toLowerCase();
 
-            // direct key
+            
             if (knownKeys.includes(lower)) {
                 document.getElementById('category-select') && (document.getElementById('category-select').value = lower);
                 applyFilters();
                 return;
             }
 
-            // else try match option texts (both ar/en) to find value
+            // للتتفعل اذا كان النص عربي او انكليزي
             const catSelect = document.getElementById('category-select');
             if (catSelect) {
                 for (let i = 0; i < catSelect.options.length; i++) {
